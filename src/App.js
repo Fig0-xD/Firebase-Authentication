@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import { AuthProvider } from "./components/contexts/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./components/ForgotPassword";
+import UpdateProfile from "./components/UpdateProfile";
 
 function App() {
 	return (
@@ -24,6 +25,14 @@ function App() {
 								element={
 									<PrivateRoute>
 										<Dashboard />
+									</PrivateRoute>
+								}
+							/>
+							<Route
+								path="update-profile"
+								element={
+									<PrivateRoute>
+										<UpdateProfile />
 									</PrivateRoute>
 								}
 							/>

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 
 import { useAuth } from "./contexts/AuthContext";
@@ -13,6 +13,8 @@ const Signup = () => {
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -24,6 +26,7 @@ const Signup = () => {
 			setError("");
 			setLoading(true);
 			await signup(emailRef.current.value, passwordRef.current.value);
+			navigate("/");
 		} catch {
 			setError("Failed to create an account");
 		}
@@ -50,18 +53,14 @@ const Signup = () => {
 							<Form.Label>Password Confirmation</Form.Label>
 							<Form.Control type="password" ref={passwordConfirmRef} required />
 						</Form.Group>
-						<Button
-							disabled={loading}
-							className="w-100 mt-3"
-							type="submit"
-						>
+						<Button disabled={loading} className="w-100 mt-3" type="submit">
 							Sign Up
 						</Button>
 					</Form>
 				</Card.Body>
 			</Card>
 			<div className="w-100 text-center mt-2">
-				Already have an account? <Link to="/login">Log In</Link>{" "}
+				Already have an account? <Link to="/login">Log In</Link>
 			</div>
 		</React.Fragment>
 	);

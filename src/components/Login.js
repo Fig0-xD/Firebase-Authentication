@@ -12,7 +12,7 @@ const Login = () => {
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -21,7 +21,7 @@ const Login = () => {
 			setError("");
 			setLoading(true);
 			await login(emailRef.current.value, passwordRef.current.value);
-            navigate("/");
+			navigate("/");
 		} catch {
 			setError("Failed to log in");
 		}
@@ -44,21 +44,17 @@ const Login = () => {
 							<Form.Label>Password</Form.Label>
 							<Form.Control type="password" ref={passwordRef} required />
 						</Form.Group>
-						<Button
-							disabled={loading}
-							className="w-100 mt-3"
-							type="submit"
-						>
+						<Button disabled={loading} className="w-100 mt-3" type="submit">
 							Log In
 						</Button>
 					</Form>
-				<div className="w-100 text-center mt-3">
-					<Link to="/forgot-password">Forgot Password</Link>
-				</div>
+					<div className="w-100 text-center mt-3">
+						<Link to="/forgot-password">Forgot Password</Link>
+					</div>
 				</Card.Body>
 			</Card>
 			<div className="w-100 text-center mt-2">
-				Need an account? <Link to="/signup">Sign Up</Link>{" "}
+				Need an account? <Link to="/signup">Sign Up</Link>
 			</div>
 		</React.Fragment>
 	);
